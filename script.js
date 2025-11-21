@@ -37,6 +37,10 @@ function validateFields(fields, buttonId) {
     });
 }
 
+document.getElementById('startBtn').addEventListener('click', function() {
+    window.location.href = 'layout.html';
+});
+
 // Apply validation
 validateFields(layoutFields, 'nextBtn');
 validateFields(volumeFields, 'nextBtnVolume');
@@ -69,3 +73,4 @@ if (window.location.pathname.includes('results.html')) {
     document.getElementById('stopsPerHour').textContent = stopsPerHour;
     document.getElementById('linesPerSqFt').textContent = linesPerSqFt;
 }
+
