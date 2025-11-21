@@ -37,10 +37,8 @@ function validateFields(fields, buttonId) {
     });
 }
 
-document.getElementById('startBtn').addEventListener('click', function() {
-    window.location.href = 'layout.html';
-});
-
+document.addEventListener('DOMContentLoaded', () => { const startBtn = document.getElementById('startBtn'); if (startBtn) { startBtn.addEventListener('click', () => { window.location.href = 'layout.html'; }); }
+validateFields(layoutFields, 'nextBtn'); validateFields(volumeFields, 'nextBtnVolume'); });
 // Apply validation
 validateFields(layoutFields, 'nextBtn');
 validateFields(volumeFields, 'nextBtnVolume');
@@ -73,4 +71,5 @@ if (window.location.pathname.includes('results.html')) {
     document.getElementById('stopsPerHour').textContent = stopsPerHour;
     document.getElementById('linesPerSqFt').textContent = linesPerSqFt;
 }
+
 
