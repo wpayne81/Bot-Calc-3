@@ -6,7 +6,8 @@ function validateFields(fields, buttonId) { const button = document.getElementBy
 
 const checkAll = () => { const allFilled = fields.every(fid => { const el = document.getElementById(fid); return el && el.value.trim() !== ''; }); button.disabled = !allFilled; };
 
-// attach listeners fields.forEach(id => { const input = document.getElementById(id); if (input) input.addEventListener('input', checkAll); });
+// attach listeners
+                                           fields.forEach(id => { const input = document.getElementById(id); if (input) input.addEventListener('input', checkAll); });
 
   button.addEventListener('click', () => { const allValid = fields.every(fid => { const el = document.getElementById(fid); return el && el.value.trim() !== ''; }); if (!allValid) { alert('Please fill in all fields.'); return; } fields.forEach(fid => { const el = document.getElementById(fid); if (el) localStorage.setItem(fid, el.value.trim()); }); if (buttonId === 'nextBtn') { window.location.href = 'volume.html'; } else { window.location.href = 'results.html'; } }); }
 
@@ -42,6 +43,7 @@ if (window.location.pathname.includes('results.html')) {
     document.getElementById('stopsPerHour').textContent = stopsPerHour;
     document.getElementById('linesPerSqFt').textContent = linesPerSqFt;
 }
+
 
 
 
