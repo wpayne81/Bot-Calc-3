@@ -1,43 +1,14 @@
 
 // Validation for Layout Inputs
-const layoutFields = ['facilityName', 'width', 'length', 'aisles'];
-const volumeFields = ['dailyOrders', 'dailyLines', 'dailyUnits', 'linesPerStop'];
+const layoutFields = ['facilityName', 'width', 'length', 'aisles']; const volumeFields = ['dailyOrders', 'dailyLines', 'dailyUnits', 'linesPerStop'];
 
-function validateFields(fields, buttonId) {
-    const button = document.getElementById(buttonId);
-    if (!button) return;
+function validateFields(fields, buttonId) { const button = document.getElementById(buttonId); if (!button) return;
 
-    const checkAll = () => { const allFilled = fields.every(fid => { const el = document.getElementById(fid); return el && el.value.trim() !== ''; }); button.disabled = !allFilled; };
-    
-    fields.forEach(id => {
-        const input = document.getElementById(id);
-        if (input) {
-            input.addEventListener('input', () => {
-                const allFilled = fields.every(fid => {
-                    const val = document.getElementById(fid).value.trim();
-                    return val !== '';
-                });
-                button.disabled = !allFilled;
-            });
-        }
-    });
+const checkAll = () => { const allFilled = fields.every(fid => { const el = document.getElementById(fid); return el && el.value.trim() !== ''; }); button.disabled = !allFilled; };
 
-    button.addEventListener('click', () => {
-        const allValid = fields.every(fid => document.getElementById(fid).value.trim() !== '');
-        if (!allValid) {
-            alert('Please fill in all fields.');
-            return;
-        }
-        fields.forEach(fid => {
-            localStorage.setItem(fid, document.getElementById(fid).value.trim());
-        });
-        if (buttonId === 'nextBtn') {
-            window.location.href = 'volume.html';
-        } else {
-            window.location.href = 'results.html';
-        }
-    });
-}
+// attach listeners fields.forEach(id => { const input = document.getElementById(id); if (input) input.addEventListener('input', checkAll); });
+
+  button.addEventListener('click', () => { const allValid = fields.every(fid => { const el = document.getElementById(fid); return el && el.value.trim() !== ''; }); if (!allValid) { alert('Please fill in all fields.'); return; } fields.forEach(fid => { const el = document.getElementById(fid); if (el) localStorage.setItem(fid, el.value.trim()); }); if (buttonId === 'nextBtn') { window.location.href = 'volume.html'; } else { window.location.href = 'results.html'; } }); }
 
 document.addEventListener('DOMContentLoaded', () => { const startBtn = document.getElementById('startBtn'); if (startBtn) { startBtn.addEventListener('click', () => { window.location.href = 'layout.html'; }); }
 
@@ -71,6 +42,7 @@ if (window.location.pathname.includes('results.html')) {
     document.getElementById('stopsPerHour').textContent = stopsPerHour;
     document.getElementById('linesPerSqFt').textContent = linesPerSqFt;
 }
+
 
 
 
