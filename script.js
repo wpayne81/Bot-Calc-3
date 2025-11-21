@@ -7,6 +7,8 @@ function validateFields(fields, buttonId) {
     const button = document.getElementById(buttonId);
     if (!button) return;
 
+    const checkAll = () => { const allFilled = fields.every(fid => { const el = document.getElementById(fid); return el && el.value.trim() !== ''; }); button.disabled = !allFilled; };
+    
     fields.forEach(id => {
         const input = document.getElementById(id);
         if (input) {
@@ -38,13 +40,8 @@ function validateFields(fields, buttonId) {
 }
 
 document.addEventListener('DOMContentLoaded', () => { const startBtn = document.getElementById('startBtn'); if (startBtn) { startBtn.addEventListener('click', () => { window.location.href = 'layout.html'; }); }
-validateFields(layoutFields, 'nextBtn'); validateFields(volumeFields, 'nextBtnVolume'); });
 
-document.addEventListener('DOMContentLoaded', () => { const startBtn = document.getElementById('startBtn'); if (startBtn) { startBtn.addEventListener('click', () => { window.location.href = 'layout.html'; }); }
-             'nextBtn'); validateFields(volumeFields, 'nextBtnVolume'); });                                        
-// Apply validation
-validateFields(layoutFields, 'nextBtn');
-validateFields(volumeFields, 'nextBtnVolume');
+validateFields(layoutFields, 'nextBtn'); validateFields(volumeFields, 'nextBtnVolume'); });
 
 // Results Page Calculations
 if (window.location.pathname.includes('results.html')) {
@@ -74,6 +71,7 @@ if (window.location.pathname.includes('results.html')) {
     document.getElementById('stopsPerHour').textContent = stopsPerHour;
     document.getElementById('linesPerSqFt').textContent = linesPerSqFt;
 }
+
 
 
 
